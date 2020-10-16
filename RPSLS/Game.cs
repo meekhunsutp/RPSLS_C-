@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RPSLS
+﻿namespace RPSLS
 {
-    class Game
+    public class Game
     {
 
 
-       
-        
-        
-        
-        
-        
+
+
+
+
+
+
         public void RunGame() // while win != 2
         {
 
@@ -68,5 +62,5 @@ namespace RPSLS
         //Console.ForegroundColor = ConsoleColor.Red;
         //Console.ForegroundColor = ConsoleColor.White;
 
-}
+    }
 }

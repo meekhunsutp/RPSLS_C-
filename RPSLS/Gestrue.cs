@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace RPSLS
 {
@@ -14,11 +10,24 @@ namespace RPSLS
     //    Lizard = 4,
     //    Spock = 5
     //}
-
-    public class WhiteBoard
+    public class Gestrue
     {
-        
-     
+        public List<string> rockLosesTo;
+        public List<string> paperLosesTo;
+        public List<string> scissorsLosesTo;
+        public List<string> lizardLosesTo;
+        public List<string> spockLosesTo;
+
+
+
+        public Gestrue()
+        {
+            rockLosesTo = new List<string>() { "Paper", "Spock" };
+            paperLosesTo = new List<string>() { "Scissors", "Lizard" };
+            scissorsLosesTo = new List<string>() { "Rock", "Spock" };
+            lizardLosesTo = new List<string>() { "Rock", "Scissors" };
+            spockLosesTo = new List<string>() { "Paper", "Lizard" };
+        }
 
 
 
@@ -35,7 +44,8 @@ namespace RPSLS
 
 
 
-  
+
+
 
 
 
@@ -54,7 +64,7 @@ namespace RPSLS
 
     //Paper (> rock,  spock) ( < scissors, lizard)( = Paper )
 
-    //Scissors (> paper, lizard) ( < spock, scissors)( = Scissors )
+    //Scissors (> paper, lizard) ( < spock, rock)( = Scissors )
 
     //Lizard (> spock, paper) ( < rock, scissors)( = Lizard )
 
