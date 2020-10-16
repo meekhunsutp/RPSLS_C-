@@ -6,38 +6,35 @@ namespace RPSLS
 
     public class Gesture
     {
-        public List<string> rockLosesTo;
-        public List<string> paperLosesTo;
-        public List<string> scissorsLosesTo;
-        public List<string> lizardLosesTo;
-        public List<string> spockLosesTo;
 
-        public Gesture(string gesture)
+        public List<string> losesTo;
+
+        public Gesture(string selection)
         {
-            if(gesture == "Rock")
+            if(selection == "Rock")
             {
-                rockLosesTo = new List<string>() { "Paper", "Spock" };
-               
+                selection = "Rock";
+                losesTo = new List<string>() { "Paper", "Spock" };
 
             }
-            if (gesture == "Paper")
+            if (selection == "Paper")
             {
-                paperLosesTo = new List<string>() { "Scissors", "Lizard" };
+                losesTo = new List<string>() { "Scissors", "Lizard" };
 
             }
-            if (gesture == "Scissors")
+            if (selection == "Scissors")
             {
-                scissorsLosesTo = new List<string>() { "Rock", "Spock" };
+                losesTo = new List<string>() { "Rock", "Spock" };
 
             }
-            if (gesture == "Lizard")
+            if (selection == "Lizard")
             {
-                lizardLosesTo = new List<string>() { "Rock", "Scissors" };
+                losesTo = new List<string>() { "Rock", "Scissors" };
 
             }
-            if (gesture == "Spock")
+            if (selection == "Spock")
             {
-                spockLosesTo = new List<string>() { "Paper", "Lizard" };
+                losesTo = new List<string>() { "Paper", "Lizard" };
 
             }
         }

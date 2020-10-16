@@ -73,31 +73,35 @@ namespace RPSLS
             playerTwo = new Human();
         }
 
-        //public void PromptPlayerOne() //Display gesture <list> and get user input (switch), while loop for bad input
-        //{
-        //    playerOne.chosenGesture = playerOne.ChooseGesture();
-        //}
-        
-        //public void PromptPlayerTwo() //Display gesture <list> and get user input (switch), while loop for bad input
-        //{
-        //    playerTwo.chosenGesture = playerTwo.ChooseGesture();
-        //}
+        public void PromptPlayerOne() //Display gesture <list> and get user input (switch), while loop for bad input
+        {
+            Gesture playerOneSelection = playerOne.ChooseGesture();
+            //playerOne.chosenGesture = playerOne.ChooseGesture();
+        }
 
-        //public void ComputerChoice() // random selection from gestures
-        //{
-        //    computer.chosenGesture = computer.ChooseGesture();
-        //}
+        public void PromptPlayerTwo() //Display gesture <list> and get user input (switch), while loop for bad input
+        {
+            //playerTwo.chosenGesture = playerTwo.ChooseGesture();
+        }
 
-        //public void CompareOnePlayer() //compare inputs 
-        //{
-        //    if()
-        //    {
+        public void ComputerChoice() // random selection from gestures
+        {
+            //computer.chosenGesture = computer.ChooseGesture();
+            Gesture computerSelection = computer.ChooseGesture(); 
+            
+            computerSelection.losesTo.Contains(playerOneSelection);
+        }
 
-        //    }
-        //}
+        public void CompareOnePlayer() //compare inputs 
+        {
+            //if ()
+            //{
+
+            //}
+        }
         public void CompareTwoPlayer() //compare inputs 
         {
-            if (playerOne.chosenGesture == "Rock");
+            if (playerOne.chosenGesture == "Rock")
             {
 
             }
