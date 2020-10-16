@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Text;
 namespace RPSLS
 {
     public class Human : Player
@@ -17,16 +18,17 @@ namespace RPSLS
             name = Console.ReadLine();
 
         }
-        public override string ChooseGesture()
+        public override Gesture ChooseGesture()
         {
 
-            string inputForGesture = "";
+            Gesture chosenGesture;
             Console.WriteLine($"{name} Please input the Gesture number to throw: ");
             for (int i = 0; i < gestures.Count; i++)
             {
                 Console.WriteLine($"{i}) {gestures[i]}");
             }
             string userinput = Console.ReadLine();
+
             if (!int.TryParse(userinput, out _))
             {
                 Console.WriteLine("Invalid input, please enter a number");
@@ -34,20 +36,21 @@ namespace RPSLS
             }
 
             int choice = int.Parse(userinput);
+
             if (choice > gestures.Count - 1 || choice < 0)
             {
                 Console.WriteLine("Invalid option, please select again");
                 return ChooseGesture();
             }
-            inputForGesture = gestures[choice];
+            chosenGesture = gestures[choice];
+            return chosenGesture;
+        }
 
-            return inputForGesture;
-            //bool whileUserSelectsWrongInfo = true;
+                    //bool whileUserSelectsWrongInfo = true;
             //while (whileUserSelectsWrongInfo)
             //{
             //    //if they enter the wrong into, do nothing.
             //    //if they enter the right info, change whileUserSelectsWrongInfo to false
             //}
-        }
     }
 }

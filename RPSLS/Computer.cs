@@ -1,24 +1,21 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Text;
 namespace RPSLS
 {
     public class Computer : Player
     {
-
-
         public Computer()
         {
             name = "Sheldon";
         }
-
-
-        public override string ChooseGesture()
+        public override Gesture ChooseGesture()
         {
-            string userInputForGestureSelection = "";
+            Gesture chosenGesture;
             Random rng = new Random();
             int randomChoice = rng.Next(0, gestures.Count);
-            userInputForGestureSelection = gestures[randomChoice];
-            return userInputForGestureSelection;
+            chosenGesture = gestures[randomChoice];
+            return chosenGesture;
         }
     }
 }

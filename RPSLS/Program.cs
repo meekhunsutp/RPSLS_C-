@@ -1,4 +1,8 @@
-﻿namespace RPSLS
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace RPSLS
 {
     class Program
     {
@@ -8,14 +12,7 @@
 
 
             //Testing
-            Human human = new Human();
-            human.chosenGesture = human.ChooseGesture();
 
-            Human human2 = new Human();
-            human.chosenGesture = human.ChooseGesture();
-
-            //Computer computer = new Computer();
-            //computer.ChooseGesture();
 
         }
     }

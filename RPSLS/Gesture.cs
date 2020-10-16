@@ -1,16 +1,10 @@
-﻿using System.Collections.Generic;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 namespace RPSLS
 {
-    //public enum Gestures
-    //{
-    //    Rock = 1,
-    //    Paper = 2,
-    //    Scissors = 3,
-    //    Lizard = 4,
-    //    Spock = 5
-    //}
-    public class Gestrue
+
+    public class Gesture
     {
         public List<string> rockLosesTo;
         public List<string> paperLosesTo;
@@ -18,16 +12,36 @@ namespace RPSLS
         public List<string> lizardLosesTo;
         public List<string> spockLosesTo;
 
-
-
-        public Gestrue()
+        public Gesture(string gesture)
         {
-            rockLosesTo = new List<string>() { "Paper", "Spock" };
-            paperLosesTo = new List<string>() { "Scissors", "Lizard" };
-            scissorsLosesTo = new List<string>() { "Rock", "Spock" };
-            lizardLosesTo = new List<string>() { "Rock", "Scissors" };
-            spockLosesTo = new List<string>() { "Paper", "Lizard" };
+            if(gesture == "Rock")
+            {
+                rockLosesTo = new List<string>() { "Paper", "Spock" };
+               
+
+            }
+            if (gesture == "Paper")
+            {
+                paperLosesTo = new List<string>() { "Scissors", "Lizard" };
+
+            }
+            if (gesture == "Scissors")
+            {
+                scissorsLosesTo = new List<string>() { "Rock", "Spock" };
+
+            }
+            if (gesture == "Lizard")
+            {
+                lizardLosesTo = new List<string>() { "Rock", "Scissors" };
+
+            }
+            if (gesture == "Spock")
+            {
+                spockLosesTo = new List<string>() { "Paper", "Lizard" };
+
+            }
         }
+
 
 
 
