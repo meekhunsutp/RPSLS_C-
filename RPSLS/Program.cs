@@ -10,6 +10,15 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
+            Human human = new Human();
+            human.ChooseGesture();
+
+            Human human2 = new Human();
+            human2.ChooseGesture();
+
+            Computer computer = new Computer();
+            computer.ChooseGesture();
+
         }
     }
 }
