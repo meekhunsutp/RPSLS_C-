@@ -29,7 +29,7 @@ namespace RPSLS
         {
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("LET'S PLAY ROCK PAPER SCISSOR LIZARD SPOCK!");
-            Console.WriteLine("It's very simple\n");
+            Console.WriteLine("It's very simple\n\n");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("BEST OF THREE WINS\n\n");
             Console.ForegroundColor = ConsoleColor.Blue;

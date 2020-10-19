@@ -16,12 +16,14 @@ namespace RPSLS
         }
         public override Gesture ChooseGesture()
         {
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine($"\n{name} - Please input the Gesture number to throw: \n");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"\n{name} - Please input the Gesture number to throw: ");
             for (int i = 0; i < gestures.Count; i++)
             {
                 Console.WriteLine($"{i}) {gestures[i].selection}");
             }
+            Console.WriteLine("\n\n");
             Console.ForegroundColor = ConsoleColor.White;
             string userinput = Console.ReadLine();
 
