@@ -12,7 +12,8 @@ namespace RPSLS
 
             Game start = new Game();
             start.RunGame();
-            
+            Console.ReadLine();
+
             //Testing
 
 

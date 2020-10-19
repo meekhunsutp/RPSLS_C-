@@ -9,45 +9,24 @@ namespace RPSLS
         public Human playerOne;
         public Human playerTwo;
         public Computer computer;
+        public int numberOfPlayers;
         public string playerOneSelection;
         public string playerTwoSelection;
         public string computerSelection;
 
-
-
-
-
-
-
-
-        public void RunGame() // while win != 2
+        public void RunGame()
         {
             Welcome();
             ChoosePlayers();
-
+            DisplyWinner();
         }
 
-        public void ChoosePlayers() // One or two players
+        public void Welcome()
         {
-            Console.WriteLine("Please select 1 or 2 players");
-            int numPlayers = int.Parse(Console.ReadLine());
-            if( numPlayers == 1)
-            {
-                OnePlayer();
-            }
-            else
-            {
-                TwoPlayer();
-            }
-
-
-
-        }
-
-        public void Welcome() // introduction and state rules
-        {
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("LET'S PLAY RPSLS!");
-            Console.WriteLine("It's very simple\n");
+            Console.WriteLine("It's very simple\n\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Scissors CUTS paper");
             Console.WriteLine("Paper COVERS rock");
             Console.WriteLine("Rock CRUSHES lizard");
@@ -57,13 +36,42 @@ namespace RPSLS
             Console.WriteLine("Lizard EATS paper");
             Console.WriteLine("Paper DISPROVES Spock ");
             Console.WriteLine("Spock VAPORIZES rock ");
-            Console.WriteLine("Rock CRUSHES Scissors");
+            Console.WriteLine("Rock CRUSHES Scissors\n\n");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public void DisplyWinner() // print score and winner of game
+        public int ChoosePlayers()
         {
-
+            Console.WriteLine("Please select 1 or 2 players");
+            string numPlayers = Console.ReadLine();
+            if (!int.TryParse(numPlayers, out _))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input, please enter a number");
+                Console.ForegroundColor = ConsoleColor.White;
+                return ChoosePlayers();
+            }
+            int numberPlayers = int.Parse(numPlayers);
+            if (numberPlayers != 1 && numberPlayers != 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid option, please select again");
+                Console.ForegroundColor = ConsoleColor.White;
+                return ChoosePlayers();
+            }
+            else if ( numberPlayers == 1)
+            {
+                OnePlayer();
+                return numberOfPlayers;
+            }
+            else
+            {
+                TwoPlayer();
+                return numberOfPlayers;
+            }
         }
+
+
 
         public void OnePlayer()
         {
@@ -76,60 +84,80 @@ namespace RPSLS
         {
             playerOne = new Human();
             playerTwo = new Human();
+            DetermineWinnerTwoPlayer();
         }
 
-        public void PromptPlayerOne() //Display gesture <list> and get user input (switch), while loop for bad input
+        public void PromptPlayerOne()
         {
-            //Gesture playerOneSelection = playerOne.ChooseGesture();
-            
             playerOneSelection = playerOne.ChooseGesture().selection;
-            //playerOne.chosenGesture = playerOne.ChooseGesture();
         }
 
-        public void PromptPlayerTwo() //Display gesture <list> and get user input (switch), while loop for bad input
+        public void PromptPlayerTwo() 
         {
-            //playerTwo.chosenGesture = playerTwo.ChooseGesture();
+            playerTwoSelection = playerTwo.ChooseGesture().selection;
         }
 
-        public void ComputerChoice() // random selection from gestures
+        public void ComputerChoice()
         {
-            //computer.chosenGesture = computer.ChooseGesture();
-            //Gesture computerSelection = computer.ChooseGesture();
             computerSelection = computer.ChooseGesture().selection;
-            
-            //computerSelection.losesTo.Contains(playerOneSelection);
         }
 
-        public void CompareOnePlayer() //compare inputs 
+        public void CompareOnePlayer()
         {
 
             if( playerOneSelection == computerSelection)
             {
-                Console.WriteLine($"\nYou both selected {computerSelection}, it's a TIE!\n");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"\nYou both threw {computerSelection}, it's a TIE!\n");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else if (playerOne.chosenGesture.losesTo.Contains(computerSelection))
             {
                 computer.wins++;
-                Console.WriteLine($"\n{playerOne.name} chose {playerOneSelection}");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"\n{playerOne.name} threw {playerOneSelection}");
                 Console.WriteLine($"{computer.name} threw {computerSelection}, {computer.name} wins this round!\n" );
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
                 playerOne.wins++;
-                Console.WriteLine($"\n{playerOne.name} chose {playerOneSelection}");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"\n{playerOne.name} threw {playerOneSelection}");
                 Console.WriteLine($"{computer.name} threw {computerSelection}, {playerOne.name} wins this round!\n");
+                Console.ForegroundColor = ConsoleColor.White;
 
             }
         }
-        //public void CompareTwoPlayer() //compare inputs 
-        //{
-        //    if (playerOne.chosenGesture == "Rock")
-        //    {
+        public void CompareTwoPlayer()
+        {
 
-        //    }
-        //}
+            if (playerOneSelection == playerTwoSelection)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"\nYou both threw {playerTwoSelection}, it's a TIE!\n");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (playerOne.chosenGesture.losesTo.Contains(playerTwoSelection))
+            {
+                playerTwo.wins++;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"\n{playerOne.name} threw {playerOneSelection}");
+                Console.WriteLine($"{playerTwo.name} threw {playerTwoSelection}, {playerTwo.name} wins this round!\n");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                playerOne.wins++;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"\n{playerOne.name} threw {playerOneSelection}");
+                Console.WriteLine($"{playerTwo.name} threw {playerTwoSelection}, {playerOne.name} wins this round!\n");
+                Console.ForegroundColor = ConsoleColor.White;
 
-        public void DetermineWinnerOnePlayer() //increment winner
+            }
+        }
+
+        public void DetermineWinnerOnePlayer()
         {
             while (playerOne.wins != 2 && computer.wins != 2)
             {
@@ -137,19 +165,36 @@ namespace RPSLS
                 ComputerChoice();
                 CompareOnePlayer();
             }
+        }
+        
+        public void DetermineWinnerTwoPlayer()
+        {
+            while (playerOne.wins != 2 && playerTwo.wins != 2)
+            {
+                PromptPlayerOne();
+                PromptPlayerTwo();
+                CompareTwoPlayer();
+            }
+        }
+
+        public void DisplyWinner()
+        {
             if (playerOne.wins == 2)
             {
-                Console.WriteLine($"{playerOne.name} WINS THE GAME!!");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"***{playerOne.name} WINS THE GAME!!***");
+            }
+            else if (playerTwo.wins == 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"***{playerTwo.name} WINS THE GAME!!***");
             }
             else
             {
-                Console.WriteLine($"{computer.name} WINS THE GAME!!");
-
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"***{computer.name} WINS THE GAME!!***");
             }
-
         }
-
-
 
         //For two player game, need to Console.Clear so you dont see selection
         //public void ClearLastLine()
@@ -158,8 +203,7 @@ namespace RPSLS
         //    Console.Write(new string (' ', Console.BufferWidth));
         //    Console.SetCursorPosition(0, Console.CursorTop - 1);
         //}
-        //Console.ForegroundColor = ConsoleColor.Red;
-        //Console.ForegroundColor = ConsoleColor.White;
+
 
     }
 }

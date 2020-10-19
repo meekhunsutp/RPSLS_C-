@@ -14,7 +14,7 @@ namespace RPSLS
 
         public void GetPlayerName()
         {
-            Console.WriteLine("Please enter your name: ");
+            Console.WriteLine("\nPlease enter your name: ");
             name = Console.ReadLine().ToUpper();
 
         }
