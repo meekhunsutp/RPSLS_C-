@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 namespace RPSLS
 {
     public class Game
     {
-        Human playerOne;
-        Human playerTwo;
-        Computer computer;
-        string playerOneSelection;
-        string playerTwoSelection;
-        string computerSelection;
+        public Human playerOne;
+        public Human playerTwo;
+        public Computer computer;
+        public string playerOneSelection;
+        public string playerTwoSelection;
+        public string computerSelection;
+
 
 
 
@@ -45,7 +47,7 @@ namespace RPSLS
         public void Welcome() // introduction and state rules
         {
             Console.WriteLine("LET'S PLAY RPSLS!");
-            Console.WriteLine("It's very simple");
+            Console.WriteLine("It's very simple\n");
             Console.WriteLine("Scissors CUTS paper");
             Console.WriteLine("Paper COVERS rock");
             Console.WriteLine("Rock CRUSHES lizard");
@@ -62,10 +64,14 @@ namespace RPSLS
         {
 
         }
+
         public void OnePlayer()
         {
             playerOne = new Human();
             computer = new Computer();
+            PromptPlayerOne();
+            ComputerChoice();
+            CompareOnePlayer();
         }
         public void TwoPlayer()
         {
@@ -75,7 +81,9 @@ namespace RPSLS
 
         public void PromptPlayerOne() //Display gesture <list> and get user input (switch), while loop for bad input
         {
-            Gesture playerOneSelection = playerOne.ChooseGesture();
+            //Gesture playerOneSelection = playerOne.ChooseGesture();
+            
+            playerOneSelection = playerOne.ChooseGesture().selection;
             //playerOne.chosenGesture = playerOne.ChooseGesture();
         }
 
@@ -87,25 +95,31 @@ namespace RPSLS
         public void ComputerChoice() // random selection from gestures
         {
             //computer.chosenGesture = computer.ChooseGesture();
-            Gesture computerSelection = computer.ChooseGesture(); 
+            //Gesture computerSelection = computer.ChooseGesture();
+            computerSelection = computer.ChooseGesture().selection;
             
-            computerSelection.losesTo.Contains(playerOneSelection);
+            //computerSelection.losesTo.Contains(playerOneSelection);
         }
 
         public void CompareOnePlayer() //compare inputs 
         {
-            //if ()
-            //{
 
-            //}
-        }
-        public void CompareTwoPlayer() //compare inputs 
-        {
-            if (playerOne.chosenGesture == "Rock")
+            if (playerOne.chosenGesture.losesTo.Contains(computerSelection))
             {
-
+                computer.wins++;
+            }
+            else
+            {
+                playerOne.wins++;
             }
         }
+        //public void CompareTwoPlayer() //compare inputs 
+        //{
+        //    if (playerOne.chosenGesture == "Rock")
+        //    {
+
+        //    }
+        //}
 
         public void DetermineWinner() //increment winner
         {

@@ -6,6 +6,7 @@ namespace RPSLS
     public class Human : Player
     {
 
+        public Gesture chosenGesture;
 
         public Human()
         {
@@ -21,11 +22,10 @@ namespace RPSLS
         public override Gesture ChooseGesture()
         {
 
-            Gesture chosenGesture;
             Console.WriteLine($"{name} Please input the Gesture number to throw: ");
             for (int i = 0; i < gestures.Count; i++)
             {
-                Console.WriteLine($"{i}) {gestures[i]}");
+                Console.WriteLine($"{i}) {gestures[i].selection}");
             }
             string userinput = Console.ReadLine();
 
@@ -46,11 +46,5 @@ namespace RPSLS
             return chosenGesture;
         }
 
-                    //bool whileUserSelectsWrongInfo = true;
-            //while (whileUserSelectsWrongInfo)
-            //{
-            //    //if they enter the wrong into, do nothing.
-            //    //if they enter the right info, change whileUserSelectsWrongInfo to false
-            //}
     }
 }
