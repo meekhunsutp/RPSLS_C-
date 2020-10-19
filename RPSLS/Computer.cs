@@ -7,11 +7,10 @@ namespace RPSLS
     {
         public Computer()
         {
-            name = "Sheldon";
+            name = "SHELDON";
         }
         public override Gesture ChooseGesture()
         {
-            Gesture chosenGesture;
             Random rng = new Random();
             int randomChoice = rng.Next(0, gestures.Count);
             chosenGesture = gestures[randomChoice];

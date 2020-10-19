@@ -69,9 +69,8 @@ namespace RPSLS
         {
             playerOne = new Human();
             computer = new Computer();
-            PromptPlayerOne();
-            ComputerChoice();
-            CompareOnePlayer();
+            DetermineWinnerOnePlayer();
+
         }
         public void TwoPlayer()
         {
@@ -104,13 +103,22 @@ namespace RPSLS
         public void CompareOnePlayer() //compare inputs 
         {
 
-            if (playerOne.chosenGesture.losesTo.Contains(computerSelection))
+            if( playerOneSelection == computerSelection)
+            {
+                Console.WriteLine($"\nYou both selected {computerSelection}, it's a TIE!\n");
+            }
+            else if (playerOne.chosenGesture.losesTo.Contains(computerSelection))
             {
                 computer.wins++;
+                Console.WriteLine($"\n{playerOne.name} chose {playerOneSelection}");
+                Console.WriteLine($"{computer.name} threw {computerSelection}, {computer.name} wins this round!\n" );
             }
             else
             {
                 playerOne.wins++;
+                Console.WriteLine($"\n{playerOne.name} chose {playerOneSelection}");
+                Console.WriteLine($"{computer.name} threw {computerSelection}, {playerOne.name} wins this round!\n");
+
             }
         }
         //public void CompareTwoPlayer() //compare inputs 
@@ -121,8 +129,23 @@ namespace RPSLS
         //    }
         //}
 
-        public void DetermineWinner() //increment winner
+        public void DetermineWinnerOnePlayer() //increment winner
         {
+            while (playerOne.wins != 2 && computer.wins != 2)
+            {
+                PromptPlayerOne();
+                ComputerChoice();
+                CompareOnePlayer();
+            }
+            if (playerOne.wins == 2)
+            {
+                Console.WriteLine($"{playerOne.name} WINS THE GAME!!");
+            }
+            else
+            {
+                Console.WriteLine($"{computer.name} WINS THE GAME!!");
+
+            }
 
         }
 

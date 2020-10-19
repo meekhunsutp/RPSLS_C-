@@ -9,6 +9,8 @@ namespace RPSLS
         public int wins;
         //public string chosenGesture;
         public List<Gesture> gestures;
+        public Gesture chosenGesture;
+
 
 
         public Player()
