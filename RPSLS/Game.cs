@@ -14,18 +14,20 @@ namespace RPSLS
         public string playerTwoSelection;
         public string computerSelection;
 
-        public void RunGame()
+        public void RunGame() // Order of game
         {
             Welcome();
             ChoosePlayers();
             DisplyWinner();
         }
 
-        public void Welcome()
+        public void Welcome() // Welcome and display rules
         {
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("LET'S PLAY RPSLS!");
-            Console.WriteLine("It's very simple\n\n");
+            Console.WriteLine("It's very simple\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("BEST OF THREE WINS\n\n");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Scissors CUTS paper");
             Console.WriteLine("Paper COVERS rock");
@@ -40,7 +42,7 @@ namespace RPSLS
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public int ChoosePlayers()
+        public int ChoosePlayers() // Choice of players, valid input check
         {
             Console.WriteLine("Please select 1 or 2 players");
             string numPlayers = Console.ReadLine();
@@ -72,37 +74,36 @@ namespace RPSLS
         }
 
 
-
-        public void OnePlayer()
+        public void OnePlayer() // Instant one player mode
         {
             playerOne = new Human();
             computer = new Computer();
             DetermineWinnerOnePlayer();
-
         }
-        public void TwoPlayer()
+        public void TwoPlayer() // Instant two player mode
         {
             playerOne = new Human();
             playerTwo = new Human();
             DetermineWinnerTwoPlayer();
         }
-
-        public void PromptPlayerOne()
+        public void PromptPlayerOne() // Gets user input as string
         {
             playerOneSelection = playerOne.ChooseGesture().selection;
+            ClearLastLine();
         }
-
-        public void PromptPlayerTwo() 
+        public void PromptPlayerTwo() // Gets user input as string
         {
             playerTwoSelection = playerTwo.ChooseGesture().selection;
+            ClearLastLine();
         }
-
-        public void ComputerChoice()
+        public void ComputerChoice() // Gets random computer input as string
         {
             computerSelection = computer.ChooseGesture().selection;
         }
 
-        public void CompareOnePlayer()
+
+
+        public void CompareOnePlayer() // PlayerOne vs Computer Rounds
         {
 
             if( playerOneSelection == computerSelection)
@@ -129,7 +130,7 @@ namespace RPSLS
 
             }
         }
-        public void CompareTwoPlayer()
+        public void CompareTwoPlayer() // PlayerOne vs PlayerTwo Rounds
         {
 
             if (playerOneSelection == playerTwoSelection)
@@ -157,7 +158,8 @@ namespace RPSLS
             }
         }
 
-        public void DetermineWinnerOnePlayer()
+
+        public void DetermineWinnerOnePlayer() // Loop Rounds until winner
         {
             while (playerOne.wins != 2 && computer.wins != 2)
             {
@@ -167,7 +169,7 @@ namespace RPSLS
             }
         }
         
-        public void DetermineWinnerTwoPlayer()
+        public void DetermineWinnerTwoPlayer() // Loop Rounds until winner
         {
             while (playerOne.wins != 2 && playerTwo.wins != 2)
             {
@@ -177,7 +179,8 @@ namespace RPSLS
             }
         }
 
-        public void DisplyWinner()
+
+        public void DisplyWinner() // There has been a winner, display message
         {
             if (playerOne.wins == 2)
             {
@@ -196,14 +199,12 @@ namespace RPSLS
             }
         }
 
-        //For two player game, need to Console.Clear so you dont see selection
-        //public void ClearLastLine()
-        //{
-        //    Console.SetCursorPosition(0, Console.CursorTop - 1);
-        //    Console.Write(new string (' ', Console.BufferWidth));
-        //    Console.SetCursorPosition(0, Console.CursorTop - 1);
-        //}
 
-
+        public void ClearLastLine() // Deletes visible userInput in two player mode for next player
+        {
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            Console.Write(new string(' ', Console.BufferWidth));
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+        }
     }
 }

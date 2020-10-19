@@ -9,14 +9,9 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
-
             Game start = new Game();
             start.RunGame();
             Console.ReadLine();
-
-            //Testing
-
-
         }
     }
 }

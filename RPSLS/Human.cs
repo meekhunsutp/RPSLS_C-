@@ -5,22 +5,17 @@ namespace RPSLS
 {
     public class Human : Player
     {
-
-
         public Human()
         {
             GetPlayerName();
         }
-
         public void GetPlayerName()
         {
             Console.WriteLine("\nPlease enter your name: ");
             name = Console.ReadLine().ToUpper();
-
         }
         public override Gesture ChooseGesture()
         {
-
             Console.WriteLine($"\n{name} Please input the Gesture number to throw: ");
             for (int i = 0; i < gestures.Count; i++)
             {
@@ -44,6 +39,5 @@ namespace RPSLS
             chosenGesture = gestures[choice];
             return chosenGesture;
         }
-
     }
 }
