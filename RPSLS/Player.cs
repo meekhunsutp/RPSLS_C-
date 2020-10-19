@@ -12,7 +12,7 @@ namespace RPSLS
 
         public Player()
         {
-            gestures = new List<Gesture>() { new Gesture("Rock"), new Gesture("Paper"), new Gesture("Scissors"), new Gesture("Lizard"), new Gesture("Spock") };
+            gestures = new List<Gesture>() { new Gesture("Rock", new List<string>() { "Paper", "Spock" }), new Gesture("Paper", new List<string>() { "Scissors", "Lizard" }), new Gesture("Scissors", new List<string>() { "Rock", "Spock" }), new Gesture("Lizard", new List<string>() { "Rock", "Scissors" }), new Gesture("Spock", new List<string>() { "Paper", "Lizard" }) };
         }
         public abstract Gesture ChooseGesture();
     }

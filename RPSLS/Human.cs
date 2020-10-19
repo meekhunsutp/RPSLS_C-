@@ -16,16 +16,19 @@ namespace RPSLS
         }
         public override Gesture ChooseGesture()
         {
-            Console.WriteLine($"\n{name} Please input the Gesture number to throw: ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\n{name} - Please input the Gesture number to throw: ");
             for (int i = 0; i < gestures.Count; i++)
             {
                 Console.WriteLine($"{i}) {gestures[i].selection}");
             }
+            Console.ForegroundColor = ConsoleColor.White;
             string userinput = Console.ReadLine();
 
             if (!int.TryParse(userinput, out _))
             {
-                Console.WriteLine("Invalid input, please enter a number");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("INVALID input, please enter a number");
                 return ChooseGesture();
             }
 
@@ -33,7 +36,8 @@ namespace RPSLS
 
             if (choice > gestures.Count - 1 || choice < 0)
             {
-                Console.WriteLine("Invalid option, please select again");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("INVALID option, please select again");
                 return ChooseGesture();
             }
             chosenGesture = gestures[choice];

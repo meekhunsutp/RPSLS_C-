@@ -9,34 +9,10 @@ namespace RPSLS
         public List<string> losesTo;
         public string selection;
 
-        public Gesture(string selection)
-
+        public Gesture(string selection, List<string> losesTo)
         {
-            if(selection == "Rock")
-            {
-                this.selection = selection;
-                losesTo = new List<string>() { "Paper", "Spock" };
-            }
-            if (selection == "Paper")
-            {
-                this.selection = selection;
-                losesTo = new List<string>() { "Scissors", "Lizard" };
-            }
-            if (selection == "Scissors")
-            {
-                this.selection = selection;
-                losesTo = new List<string>() { "Rock", "Spock" };
-            }
-            if (selection == "Lizard")
-            {
-                this.selection = selection;
-                losesTo = new List<string>() { "Rock", "Scissors" };
-            }
-            if (selection == "Spock")
-            {
-                this.selection = selection;
-                losesTo = new List<string>() { "Paper", "Lizard" };
-            }
+            this.selection = selection;
+            this.losesTo = losesTo;
         }
     }
 }
